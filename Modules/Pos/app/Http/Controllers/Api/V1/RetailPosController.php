@@ -25,9 +25,12 @@ class RetailPosController extends Controller
         $weighted = $this->barcodeService->decodeWeightedEan13($code);
         $lookupSku = $weighted !== null ? $weighted['sku_code'] : $code;
 
+        // Group OR conditions so Eloquent global scopes (tenant/active/soft-delete) cannot be bypassed.
         $product = Product::query()
-            ->where('barcode', $code)
-            ->orWhere('sku', $lookupSku)
+            ->where(function ($query) use ($code, $lookupSku): void {
+                $query->where('barcode', $code)
+                    ->orWhere('sku', $lookupSku);
+            })
             ->first();
 
         if ($product === null) {
@@ -48,8 +51,11 @@ class RetailPosController extends Controller
             'items' => ['required', 'array', 'min:1'],
         ]);
 
+        $branchId = (int) $validated['branch_id'];
+        $this->assertBranchAccess($request, $branchId);
+
         $held = $this->holdCartService->hold(
-            branchId: (int) $validated['branch_id'],
+            branchId: $branchId,
             label: (string) $validated['label'],
             items: $validated['items']
         );
@@ -61,13 +67,17 @@ class RetailPosController extends Controller
     {
         $branchId = $request->integer('branch_id');
         abort_if($branchId <= 0, 422, 'branch_id is required.');
+        $this->assertBranchAccess($request, $branchId);
 
         return ApiResponse::success($this->holdCartService->listActive($branchId));
     }
 
-    public function resumeHeldCart(int $id): JsonResponse
+    public function resumeHeldCart(Request $request, int $id): JsonResponse
     {
-        return ApiResponse::success($this->holdCartService->resume($id));
+        $cart = \Modules\Pos\Models\PosHeldCart::query()->whereNull('resumed_at')->findOrFail($id);
+        $this->assertBranchAccess($request, (int) $cart->branch_id);
+
+        return ApiResponse::success($this->holdCartService->resume($cart->id));
     }
 
     public function offlineSync(Request $request): JsonResponse
@@ -83,10 +93,22 @@ class RetailPosController extends Controller
             'orders.*.stock_shortage' => ['nullable', 'boolean'],
         ]);
 
-        $branch = Branch::query()->findOrFail((int) $validated['branch_id']);
+        $branchId = (int) $validated['branch_id'];
+        $this->assertBranchAccess($request, $branchId);
+
+        $branch = Branch::query()->findOrFail($branchId);
 
         return ApiResponse::success([
             'results' => $this->offlineSyncService->syncBatch($branch, $validated['orders']),
         ]);
+    }
+
+    private function assertBranchAccess(Request $request, int $branchId): void
+    {
+        $user = $request->user();
+
+        if ($user !== null && method_exists($user, 'assignedToBranch') && $user->assignedToBranch() && (int) $user->branch_id !== $branchId) {
+            abort(403, 'You are not authorized to access this branch.');
+        }
     }
 }

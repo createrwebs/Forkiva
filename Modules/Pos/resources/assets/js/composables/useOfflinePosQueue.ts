@@ -6,8 +6,8 @@ import {
 } from '@/modules/pos/api/retailPos.ts'
 
 export interface OfflineQueueStorage {
-  getItem(key: string): string | null
-  setItem(key: string, value: string): void
+  getItem: (key: string) => string | null
+  setItem: (key: string, value: string) => void
 }
 
 const STORAGE_KEY = 'forkiva:pos:offline-order-queue'

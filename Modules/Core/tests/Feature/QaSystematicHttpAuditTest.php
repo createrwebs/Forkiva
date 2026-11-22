@@ -250,4 +250,35 @@ class QaSystematicHttpAuditTest extends TestCase
         $loginShell->assertSee('kitchen-loader__copy-th', false);
         $loginShell->assertSee('กำลังเตรียมทุกอย่างให้คุณ', false);
     }
+
+    public function test_retail_pos_blocks_cross_branch_idor_on_hold_cart_and_offline_sync(): void
+    {
+        $branchA = Branch::factory()->create(['currency' => 'THB']);
+        $branchB = Branch::factory()->create(['currency' => 'THB']);
+
+        $cashierA = User::factory()->create(['branch_id' => $branchA->id]);
+        $cashierA->givePermissionTo(Permission::findOrCreate('admin.pos.index', 'api'));
+
+        // Cashier A cannot list or hold cart for Branch B
+        $this->actingAs($cashierA)->getJson("/api/v1/pos/hold-carts?branch_id={$branchB->id}")->assertStatus(403);
+        $this->actingAs($cashierA)->postJson('/api/v1/pos/hold-carts', [
+            'branch_id' => $branchB->id,
+            'label' => 'idor-attempt',
+            'items' => [['product_id' => 1, 'qty' => 1]],
+        ])->assertStatus(403);
+
+        // Cashier A cannot push offline sync into Branch B
+        $this->actingAs($cashierA)->postJson('/api/v1/pos/offline-sync', [
+            'branch_id' => $branchB->id,
+            'orders' => [
+                [
+                    'client_uuid' => '550e8400-e29b-41d4-a716-446655440777',
+                    'offline_reference' => 'OFF-IDOR-001',
+                    'payment_method' => 'cash',
+                    'total' => '50.00',
+                    'items' => [['product_id' => 1, 'quantity' => 1, 'unit_price' => '50.00']],
+                ],
+            ],
+        ])->assertStatus(403);
+    }
 }
