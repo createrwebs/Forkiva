@@ -1,0 +1,12 @@
+{
+    "name": "Import",
+    "alias": "import",
+    "description": "Shared data import workflow",
+    "keywords": [],
+    "priority": 216,
+    "providers": [
+        "Modules\\Import\\Providers\\ImportServiceProvider",
+        "Modules\\Import\\Providers\\DeferredImportServiceProvider"
+    ],
+    "files": []
+}

@@ -1,0 +1,20 @@
+{
+  "name": "forkiva/import",
+  "description": "",
+  "authors": [
+    {
+      "name": "Tenvoro",
+      "email": "info@tenvoro.dev"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Modules\\Import\\": "app/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Import\\Tests\\": "tests/"
+    }
+  }
+}

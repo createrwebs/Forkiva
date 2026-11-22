@@ -1,0 +1,13 @@
+<?php
+
+namespace Modules\Pos\Events;
+
+use Modules\Pos\Models\PosSession;
+
+class ClosePosSession
+{
+    /**
+     * Create a new event instance.
+     */
+    public function __construct(public PosSession $session) {}
+}

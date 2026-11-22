@@ -1,0 +1,13 @@
+{
+    "name": "GiftCard",
+    "alias": "giftcard",
+    "description": "",
+    "keywords": [],
+    "priority": 220,
+    "providers": [
+        "Modules\\GiftCard\\Providers\\DeferredGiftCardServiceProvider",
+        "Modules\\GiftCard\\Providers\\GiftCardServiceProvider",
+        "Modules\\GiftCard\\Providers\\EventServiceProvider"
+    ],
+    "files": []
+}

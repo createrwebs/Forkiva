@@ -1,0 +1,9 @@
+{
+  "name": "Cart",
+  "alias": "cart",
+  "description": "",
+  "keywords": [],
+  "priority": 120,
+  "providers": [],
+  "files": []
+}

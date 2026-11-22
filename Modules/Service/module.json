@@ -1,0 +1,11 @@
+{
+    "name": "Service",
+    "alias": "service",
+    "description": "",
+    "keywords": [],
+    "priority": 400,
+    "providers": [
+        "Modules\\Service\\Providers\\DeferredServiceServiceProvider"
+    ],
+    "files": []
+}

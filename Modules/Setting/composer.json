@@ -1,0 +1,24 @@
+{
+    "name": "forkiva/setting",
+    "description": "",
+    "authors": [
+        {
+            "name": "Tenvoro",
+            "email": "tenvoro@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Modules\\Setting\\": "app/",
+            "Modules\\Setting\\Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Setting\\Tests\\": "tests/"
+        }
+    }
+}

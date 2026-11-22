@@ -1,0 +1,11 @@
+{
+    "name": "DailyFinance",
+    "alias": "dailyfinance",
+    "description": "Restaurant daily financial overview and operational reconciliation workflows.",
+    "keywords": [],
+    "priority": 208,
+    "providers": [
+        "Modules\\DailyFinance\\Providers\\DeferredDailyFinanceServiceProvider"
+    ],
+    "files": []
+}

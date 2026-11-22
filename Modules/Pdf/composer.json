@@ -1,0 +1,23 @@
+{
+    "name": "forkiva/pdf",
+    "description": "Forkiva PDF generation module",
+    "require": {
+        "chrome-php/chrome": "^1.16",
+        "dompdf/dompdf": "^3.0",
+        "khaled.alshamaa/ar-php": "^7.0",
+        "pontedilana/php-weasyprint": "^2.7",
+        "spatie/browsershot": "^5.1",
+        "spatie/laravel-pdf": "^2.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Pdf\\": "app/",
+            "Modules\\Pdf\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Pdf\\Tests\\": "tests/"
+        }
+    }
+}

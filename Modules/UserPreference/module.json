@@ -1,0 +1,11 @@
+{
+    "name": "UserPreference",
+    "alias": "userpreference",
+    "description": "User-owned preferences",
+    "keywords": [],
+    "priority": 101,
+    "providers": [
+        "Modules\\UserPreference\\Providers\\DeferredUserPreferenceServiceProvider"
+    ],
+    "files": []
+}

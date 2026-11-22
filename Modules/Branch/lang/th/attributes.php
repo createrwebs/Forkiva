@@ -1,0 +1,32 @@
+<?php
+
+return [
+    'branches' => [
+        'name' => 'ชื่อ',
+        'phone' => 'เบอร์โทรศัพท์',
+        'email' => 'อีเมล',
+        'country_code' => 'ประเทศ',
+        'timezone' => 'เขตเวลา',
+        'currency' => 'สกุลเงิน',
+        'latitude' => 'ละติจูด',
+        'longitude' => 'ลองจิจูด',
+        'is_active' => 'เปิดใช้งาน',
+        'order_types' => 'ประเภทออเดอร์',
+        'order_types.*' => 'ประเภทออเดอร์',
+        'payment_methods' => 'ช่องทางชำระเงิน',
+        'payment_methods.*' => 'ช่องทางชำระเงิน',
+        'quick_pay_amounts' => 'จำนวนเงินด่วน',
+        'quick_pay_amounts.*' => 'จำนวนเงินด่วน',
+        'registration_number' => 'เลขทะเบียนพาณิชย์',
+        'cash_difference_threshold' => 'เกณฑ์ผลต่างเงินสด',
+        'legal_name' => 'ชื่อนิติบุคคล',
+        'vat_tin' => 'เลขประจำตัวผู้เสียภาษี',
+        'tax_branch_code' => 'รหัสสาขาภาษี (00000 = สำนักงานใหญ่)',
+        'promptpay_id' => 'รหัสพร้อมเพย์ (เบอร์โทร/เลขผู้เสียภาษี)',
+        'address_line1' => 'ที่อยู่บรรทัดที่ 1',
+        'address_line2' => 'ที่อยู่บรรทัดที่ 2',
+        'city' => 'เมือง/เขต',
+        'state' => 'จังหวัด',
+        'postal_code' => 'รหัสไปรษณีย์',
+    ],
+];

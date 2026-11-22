@@ -1,0 +1,8 @@
+{
+  "extends": ["@vue/tsconfig/tsconfig.dom.json", "./tsconfig.paths.json"],
+  "include": ["env.d.ts", "resources/js/**/*", "Modules/*/resources/assets/js/**/*"],
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "skipLibCheck": true
+  }
+}

@@ -1,0 +1,443 @@
+.pos-checkout-dialog.v-card {
+  border: 1px solid var(--pos-border);
+  border-radius: 16px !important;
+  color: var(--pos-text);
+  background: var(--pos-surface);
+}
+.pos-checkout-dialog .pos-checkout-dialog__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--pos-border);
+}
+.pos-checkout-dialog__icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 40px;
+  height: 40px;
+  border-radius: 11px;
+  color: var(--pos-accent);
+  background: var(--pos-accent-soft);
+}
+.pos-checkout-dialog__heading {
+  flex: 1;
+  min-width: 0;
+  white-space: normal;
+}
+.pos-checkout-dialog__heading h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 750;
+  line-height: 1.4;
+  color: var(--pos-text);
+}
+.pos-checkout-dialog__heading > span {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--pos-muted);
+}
+.pos-checkout-dialog__header > .v-btn {
+  width: 32px;
+  height: 32px;
+  color: var(--pos-muted);
+}
+.pos-checkout-dialog .pos-checkout-dialog__body {
+  padding: 22px 18px 18px !important;
+}
+.pos-checkout-dialog .v-field {
+  border-radius: 9px;
+  font-size: 13px;
+}
+.pos-checkout-dialog .v-field__outline {
+  --v-field-border-opacity: 1;
+  color: var(--pos-border);
+}
+.pos-checkout-dialog .v-field--focused .v-field__outline {
+  color: var(--pos-accent);
+}
+.pos-checkout-dialog .v-field__input {
+  min-height: 44px;
+}
+.pos-checkout-dialog .v-field input:focus,
+.pos-checkout-dialog .v-field textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+.pos-checkout-dialog .v-label {
+  font-size: 13px;
+}
+.pos-checkout-dialog .v-input__details:empty {
+  display: none;
+}
+.pos-order-information .v-row {
+  row-gap: 8px;
+}
+.pos-checkout-dialog .pos-checkout-dialog__footer {
+  min-height: auto;
+  padding: 12px 18px;
+  border-top: 1px solid var(--pos-border);
+  justify-content: flex-end;
+}
+.pos-checkout-dialog__footer .v-btn {
+  min-width: 100px;
+  height: 40px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.pos-discount-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.pos-discount-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  padding: 5px;
+  background: var(--pos-soft);
+  border-radius: 12px;
+}
+.pos-discount-tabs button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 8px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--pos-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+.pos-discount-tabs button.active {
+  background: var(--pos-surface);
+  color: var(--pos-accent);
+  border-color: rgba(var(--v-theme-primary), 0.22);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 4%);
+}
+.pos-discount-tabs button:focus-visible,
+.pos-summary-toggle:focus-visible {
+  outline: 2px solid var(--pos-accent);
+  outline-offset: 2px;
+}
+.pos-discount-applied {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(var(--v-theme-success), 0.08);
+  color: rgb(var(--v-theme-success));
+  border-radius: 9px;
+  font-size: 12px;
+}
+.pos-discount-applied > span {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+.pos-discount-applied strong {
+  white-space: nowrap;
+}
+.pos-discount-apply.v-btn {
+  border-radius: 9px;
+  font-weight: 600;
+  font-size: 13px;
+}
+.pos-order-notices:has(.v-alert) {
+  margin-bottom: 8px;
+}
+.pos-order-notices .v-alert {
+  padding: 10px 12px;
+  border-radius: 9px;
+  border: 1px solid currentColor;
+  border-inline-start-width: 3px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.pos-order-notices .v-alert__prepend {
+  margin-inline-end: 8px;
+}
+.pos-order-notices .v-alert__prepend .v-icon {
+  font-size: 20px;
+}
+.pos-workspace .pos-checkout-summary {
+  gap: 0;
+  padding: 4px 12px 0;
+  border: 1px solid var(--pos-border);
+  border-radius: 12px;
+  background: var(--pos-surface);
+}
+.pos-summary-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  color: var(--pos-text);
+  font-size: 12px;
+  list-style: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.pos-summary-toggle::-webkit-details-marker {
+  display: none;
+}
+.pos-summary-toggle > span {
+  flex: 1;
+}
+.pos-summary-toggle > strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+.pos-summary-toggle > .v-icon {
+  color: var(--pos-muted);
+}
+.pos-summary-details[open] .pos-summary-chevron {
+  transform: rotate(180deg);
+}
+.pos-checkout-summary .pos-invoice-breakdown {
+  max-height: min(180px, 25dvh);
+  overflow: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+}
+.pos-workspace .pos-checkout-summary .tax-summary-row,
+.pos-workspace .pos-checkout-summary .row-line {
+  padding: 5px 0;
+  font-size: 12px;
+}
+.pos-workspace .pos-checkout-summary .tax-summary-title small {
+  font-size: 10px;
+  margin-top: 2px;
+}
+.pos-workspace .pos-checkout-summary .total-row {
+  min-height: 58px;
+  padding: 10px 0;
+  background: none;
+  border-top: 1px dashed var(--pos-border);
+  border-radius: 0;
+  font-size: 15px;
+  color: var(--pos-text);
+  font-weight: 700;
+}
+.pos-workspace .pos-checkout-summary .total-row > span:last-child {
+  color: var(--pos-accent);
+  font-size: 27px;
+  letter-spacing: -0.6px;
+  font-weight: 800;
+}
+.pos-workspace .pos-checkout-summary .amount_due-row {
+  border-top: 1px solid var(--pos-border);
+  padding-block: 8px;
+}
+@media (max-width: 599px) {
+  .pos-checkout-dialog .pos-checkout-dialog__header {
+    padding: 14px;
+    gap: 9px;
+  }
+  .pos-checkout-dialog__heading h2 {
+    font-size: 15px;
+  }
+  .pos-checkout-dialog .pos-checkout-dialog__body {
+    padding: 20px 14px 14px !important;
+  }
+  .pos-workspace .pos-checkout-summary .total-row > span:last-child {
+    font-size: 24px;
+  }
+}
+
+.pos-checkout-dialog .v-label {
+  color: var(--pos-muted);
+  opacity: 1;
+}
+.pos-order-notices .v-alert__content {
+  color: var(--pos-text);
+}
+
+.pos-order-notices .v-alert:not(.v-alert--prominent) .v-alert__prepend {
+  align-self: start;
+  margin-top: 1px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #956500 !important;
+}
+.pos-order-notices .v-alert.text-info .v-alert__prepend {
+  color: rgb(var(--v-theme-info)) !important;
+}
+
+.pos-checkout-actions {
+  display: grid;
+  grid-template-columns: minmax(105px, 0.9fr) minmax(0, 1.25fr) minmax(0, 1.4fr);
+  grid-template-areas: 'cancel kitchen payment' 'hold kitchen payment';
+  grid-template-rows: repeat(2, 44px);
+  gap: 6px 8px;
+  margin-top: 10px;
+}
+.pos-checkout-actions > div {
+  min-width: 0;
+}
+.pos-checkout-actions > div:has(.pos-submit-cancel) {
+  grid-area: cancel;
+}
+.pos-checkout-actions > div:has(.pos-submit-hold) {
+  grid-area: hold;
+}
+.pos-checkout-actions > div:has(.pos-submit-kitchen) {
+  grid-area: kitchen;
+}
+.pos-checkout-actions > div:has(.pos-submit-payment) {
+  grid-area: payment;
+}
+.pos-checkout-actions:not(:has(.pos-submit-payment)) {
+  grid-template-areas: 'cancel kitchen kitchen' 'hold kitchen kitchen';
+}
+.pos-checkout-actions:not(:has(.pos-submit-hold)) {
+  grid-template-areas: 'cancel kitchen payment';
+  grid-template-rows: 76px;
+}
+.pos-checkout-actions:not(:has(.pos-submit-hold)):not(:has(.pos-submit-payment)) {
+  grid-template-areas: 'cancel kitchen kitchen';
+}
+.pos-workspace .pos-checkout-actions .v-btn {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  padding: 8px;
+  border: 1px solid var(--pos-border);
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  box-shadow: none;
+}
+.pos-checkout-actions .v-btn__content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.25;
+}
+.pos-action-icon {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+}
+.pos-action-icon .v-icon {
+  font-size: 23px;
+}
+.pos-workspace .pos-checkout-actions .pos-submit-kitchen {
+  background: var(--pos-soft) !important;
+  color: var(--pos-text) !important;
+}
+.pos-submit-kitchen .pos-action-icon {
+  color: var(--pos-accent);
+  background: var(--pos-surface);
+}
+.pos-workspace .pos-checkout-actions .pos-submit-payment {
+  color: #fff !important;
+  background: #00a85b !important;
+  border-color: #00a85b;
+}
+.pos-submit-payment .pos-action-icon {
+  background: rgb(255 255 255 / 15%);
+}
+.pos-workspace .pos-checkout-actions .pos-submit-cancel,
+.pos-workspace .pos-checkout-actions .pos-submit-hold {
+  background: var(--pos-surface) !important;
+  color: var(--pos-text) !important;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 9px;
+}
+.pos-workspace .pos-checkout-actions .pos-submit-cancel {
+  color: #cb3d4f !important;
+  border-color: rgba(var(--v-theme-error), 0.2);
+}
+.pos-submit-cancel .v-btn__content,
+.pos-submit-hold .v-btn__content {
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 6px;
+  width: 100%;
+}
+.pos-submit-cancel .pos-action-icon,
+.pos-submit-hold .pos-action-icon {
+  width: 20px;
+  height: 24px;
+}
+.pos-submit-cancel .pos-action-icon .v-icon,
+.pos-submit-hold .pos-action-icon .v-icon {
+  font-size: 18px;
+}
+.pos-workspace .pos-checkout-actions .v-btn:focus-visible {
+  outline: 2px solid var(--pos-accent);
+  outline-offset: 2px;
+}
+.pos-workspace .pos-checkout-actions .v-btn--disabled {
+  opacity: 0.5;
+}
+.pos-workspace .pos-checkout-actions .v-btn--disabled .v-btn__overlay {
+  opacity: 0;
+}
+@container pos-ticket (min-width: 421px) {
+  .pos-workspace .pos-checkout-actions .pos-submit-cancel-edit {
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 12px;
+    background: rgba(var(--v-theme-error), 0.04) !important;
+  }
+  .pos-submit-cancel-edit .v-btn__content {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .pos-submit-cancel-edit .pos-action-icon {
+    width: 32px;
+    height: 32px;
+    background: rgba(var(--v-theme-error), 0.08);
+  }
+  .pos-submit-cancel-edit .pos-action-icon .v-icon {
+    font-size: 23px;
+  }
+}
+@container pos-ticket (max-width: 420px) {
+  .pos-checkout-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas: 'kitchen payment' 'cancel hold';
+    grid-template-rows: 56px 44px;
+  }
+  .pos-checkout-actions:not(:has(.pos-submit-payment)) {
+    grid-template-areas: 'kitchen kitchen' 'cancel hold';
+  }
+  .pos-checkout-actions:not(:has(.pos-submit-hold)) {
+    grid-template-areas: 'kitchen payment' 'cancel cancel';
+    grid-template-rows: 56px 44px;
+  }
+  .pos-checkout-actions:not(:has(.pos-submit-hold)):not(:has(.pos-submit-payment)) {
+    grid-template-areas: 'kitchen kitchen' 'cancel cancel';
+  }
+  .pos-checkout-actions .v-btn__content {
+    flex-direction: row;
+    justify-content: center;
+    gap: 7px;
+  }
+  .pos-workspace .pos-checkout-actions .v-btn {
+    font-size: 12px;
+  }
+  .pos-action-icon {
+    width: 26px;
+    height: 28px;
+    border-radius: 8px;
+  }
+  .pos-action-icon .v-icon {
+    font-size: 20px;
+  }
+}

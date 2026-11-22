@@ -1,0 +1,30 @@
+{
+    "name": "forkiva/sms",
+    "description": "Forkiva SMS notification integration.",
+    "authors": [
+        {
+            "name": "Tenvoro",
+            "email": "tenvoro@gmail.com"
+        }
+    ],
+    "require": {
+        "prgayman/laravel-sms": "^1.6.4"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Sms\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Sms\\Tests\\": "tests/"
+        }
+    }
+}

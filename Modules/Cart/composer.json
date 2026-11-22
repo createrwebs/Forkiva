@@ -1,0 +1,13 @@
+{
+  "name": "forkiva/cart",
+  "description": "",
+  "authors": [
+    {
+      "name": "Tenvoro",
+      "email": "info@tenvoro.dev"
+    }
+  ],
+  "require": {
+    "php": "^8.2.0"
+  }
+}

@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'notifications' => 'الإشعارات',
+    'notification' => 'إشعار',
+    'notification_center' => 'مركز الإشعارات',
+    'recent_notifications' => 'أحدث الإشعارات',
+    'unread' => 'غير مقروء',
+    'unread_count' => ':count غير مقروء',
+    'unread_only' => 'غير المقروءة فقط',
+    'read_notifications' => 'المقروءة',
+    'all_notifications' => 'كل الإشعارات',
+    'all_tab' => 'الكل',
+    'unread_tab' => 'غير مقروء',
+    'read_tab' => 'مقروء',
+    'mark_as_read' => 'تحديد كمقروء',
+    'mark_all_as_read' => 'تحديد الكل كمقروء',
+    'view_all' => 'عرض الكل',
+    'load_more' => 'تحميل المزيد',
+    'empty_state' => 'لا توجد إشعارات.',
+    'empty_recent_state' => 'لا توجد إشعارات حديثة.',
+    'search_placeholder' => 'ابحث في الإشعارات',
+    'selected_notification' => 'الإشعار المحدد',
+    'push_token' => 'رمز الإشعارات الفورية',
+    'unknown_device' => 'جهاز غير معروف',
+];

@@ -1,0 +1,19 @@
+@mixin light {
+  --pos-accent: rgb(var(--v-theme-primary));
+  --pos-accent-soft: color-mix(in srgb, var(--pos-accent) 10%, var(--pos-surface));
+  --pos-canvas: #f1f4f9;
+  --pos-surface: #fff;
+  --pos-soft: #f0f3f9;
+  --pos-border: #e1e7f0;
+  --pos-text: #17243e;
+  --pos-muted: #73829d;
+}
+
+@mixin dark {
+  --pos-canvas: #171e2b;
+  --pos-surface: #202938;
+  --pos-soft: #2a3547;
+  --pos-border: #39465b;
+  --pos-text: #f1f4fa;
+  --pos-muted: #aebad0;
+}

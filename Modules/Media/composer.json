@@ -1,0 +1,20 @@
+{
+    "name": "forkiva/media",
+    "description": "",
+    "authors": [
+        {
+            "name": "Tenvoro",
+            "email": "tenvoro@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Modules\\Media\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Media\\Tests\\": "tests/"
+        }
+    }
+}

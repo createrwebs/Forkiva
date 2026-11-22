@@ -1,0 +1,36 @@
+<?php
+
+namespace Modules\Invoice\Http\Controllers;
+
+use Illuminate\Http\Response;
+use Modules\Core\Http\Controllers\Controller;
+use Modules\Invoice\Services\InvoicePDF\InvoicePDFServiceInterface;
+use Throwable;
+
+class InvoicePDFController extends Controller
+{
+    /**
+     * Create a new instance of InvoicePDFController
+     */
+    public function __construct(protected InvoicePDFServiceInterface $service) {}
+
+    /**
+     * This method render pdf file
+     *
+     * @throws Throwable
+     */
+    public function index(string $uuid): Response
+    {
+        return $this->service->view($uuid);
+    }
+
+    /**
+     * This method download pdf file
+     *
+     * @throws Throwable
+     */
+    public function download(string $uuid): Response
+    {
+        return $this->service->download($uuid);
+    }
+}

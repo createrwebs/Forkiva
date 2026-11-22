@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'notifications' => 'การแจ้งเตือน',
+    'notification' => 'การแจ้งเตือน',
+    'notification_center' => 'ศูนย์การแจ้งเตือน',
+    'recent_notifications' => 'การแจ้งเตือนล่าสุด',
+    'unread' => 'ยังไม่อ่าน',
+    'unread_count' => ':count ยังไม่อ่าน',
+    'unread_only' => 'เฉพาะยังไม่อ่าน',
+    'read_notifications' => 'อ่านแล้ว',
+    'all_notifications' => 'การแจ้งเตือนทั้งหมด',
+    'all_tab' => 'ทั้งหมด',
+    'unread_tab' => 'ยังไม่อ่าน',
+    'read_tab' => 'อ่านแล้ว',
+    'mark_as_read' => 'ทำเครื่องหมายว่าอ่าน',
+    'mark_all_as_read' => 'ทำเครื่องหมายทั้งหมดว่าอ่าน',
+    'view_all' => 'ดูทั้งหมด',
+    'load_more' => 'โหลดเพิ่ม',
+    'empty_state' => 'ไม่พบการแจ้งเตือน',
+    'empty_recent_state' => 'ไม่มีการแจ้งเตือนล่าสุด',
+    'search_placeholder' => 'ค้นหาการแจ้งเตือน',
+    'selected_notification' => 'การแจ้งเตือนที่เลือก',
+    'push_token' => 'Push Token',
+    'unknown_device' => 'อุปกรณ์ที่ไม่รู้จัก',
+];

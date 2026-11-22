@@ -1,0 +1,12 @@
+{
+    "name": "Pdf",
+    "alias": "pdf",
+    "description": "Central PDF generation and driver management",
+    "keywords": ["pdf"],
+    "priority": 205,
+    "providers": [
+        "Modules\\Pdf\\Providers\\PdfServiceProvider",
+        "Modules\\Pdf\\Providers\\DeferredPdfServiceProvider"
+    ],
+    "files": []
+}

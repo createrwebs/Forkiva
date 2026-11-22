@@ -1,0 +1,287 @@
+/* Vue replaces this boot screen when the application is ready. */
+#loading-bg {
+  --loader-accent: var(--initial-loader-color, #d67b30);
+  --loader-bg: var(--initial-loader-bg, #f8f9fb);
+  --loader-text: #282b30;
+  --loader-muted: #626973;
+  --loader-track: #e2e4e8;
+  --loader-steam: #666c75;
+  --loader-leaf: #688448;
+  --loader-pepper: #c95338;
+  --loader-seasoning: #ba853d;
+
+  position: fixed;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 2rem 1.5rem;
+  background: var(--loader-bg);
+  color: var(--loader-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  text-align: center;
+  inset: 0;
+}
+
+html[data-loader-theme='dark'] #loading-bg {
+  --loader-accent: var(--initial-loader-color, #f5a45d);
+  --loader-bg: var(--initial-loader-bg, #141619);
+  --loader-text: #f5f1eb;
+  --loader-muted: #b8b0a7;
+  --loader-track: #303033;
+  --loader-steam: #bcb0a2;
+  --loader-leaf: #a4ba83;
+  --loader-pepper: #ec795c;
+  --loader-seasoning: #f3d4a5;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-loader-theme='system'] #loading-bg {
+    --loader-accent: var(--initial-loader-color, #f5a45d);
+    --loader-bg: var(--initial-loader-bg, #141619);
+    --loader-text: #f5f1eb;
+    --loader-muted: #b8b0a7;
+    --loader-track: #303033;
+    --loader-steam: #bcb0a2;
+    --loader-leaf: #a4ba83;
+    --loader-pepper: #ec795c;
+    --loader-seasoning: #f3d4a5;
+  }
+}
+
+.kitchen-loader {
+  inline-size: min(100%, 20rem);
+}
+
+.kitchen-loader__scene {
+  position: relative;
+  inline-size: min(100%, 19rem);
+  margin: 0 auto 1.5rem;
+}
+
+.kitchen-loader__scene::before {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgb(245 164 93 / 12%), transparent 70%);
+  content: '';
+  inset: -15%;
+}
+
+.kitchen-loader__illustration {
+  position: relative;
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  overflow: visible;
+}
+
+.kitchen-loader__steam {
+  stroke: var(--loader-steam);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.kitchen-loader__steam path {
+  animation: kitchen-steam 2.8s ease-in-out infinite;
+}
+
+.kitchen-loader__steam path:nth-child(2) {
+  animation-delay: -0.93s;
+}
+
+.kitchen-loader__steam path:nth-child(3) {
+  animation-delay: -1.86s;
+}
+
+.kitchen-loader__pan {
+  transform-origin: 192px 128px;
+  animation: kitchen-pan 2.8s ease-in-out infinite;
+}
+
+.kitchen-loader__handle {
+  stroke: var(--loader-accent);
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+.kitchen-loader__bowl {
+  fill: url(#kitchen-pan-finish);
+}
+
+.kitchen-loader__finish-top {
+  stop-color: #ffd3a0;
+}
+
+.kitchen-loader__finish-bottom {
+  stop-color: var(--loader-accent);
+}
+
+.kitchen-loader__rim {
+  stroke: #ffcf9a;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.kitchen-loader__shine {
+  stroke: #fff1da;
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0.5;
+}
+
+.kitchen-loader__toss {
+  transform-origin: 132px 120px;
+  animation: kitchen-toss 2.8s ease-in-out infinite;
+}
+
+.kitchen-loader__leaf {
+  fill: var(--loader-leaf);
+}
+
+.kitchen-loader__pepper {
+  fill: var(--loader-pepper);
+}
+
+.kitchen-loader__seasoning {
+  fill: var(--loader-seasoning);
+}
+
+.kitchen-loader__heat {
+  fill: var(--loader-accent);
+}
+
+.kitchen-loader__heat path {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: kitchen-heat 1.4s ease-in-out infinite alternate;
+}
+
+.kitchen-loader__heat path:nth-child(2) {
+  animation-delay: -0.45s;
+}
+
+.kitchen-loader__heat path:nth-child(3) {
+  animation-delay: -0.9s;
+}
+
+.kitchen-loader__brand {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: clamp(1.5rem, 6vw, 1.875rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.4;
+}
+
+.kitchen-loader__caption {
+  margin: 0.625rem 0 0;
+  color: var(--loader-muted);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+}
+
+.kitchen-loader__copy-ar,
+html:lang(ar) .kitchen-loader__copy-en {
+  display: none;
+}
+
+html:lang(ar) .kitchen-loader__copy-ar {
+  display: inline;
+  letter-spacing: normal;
+}
+
+.kitchen-loader__progress {
+  direction: ltr;
+  inline-size: 6rem;
+  block-size: 3px;
+  margin: 1.75rem auto 0;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--loader-track);
+}
+
+.kitchen-loader__progress span {
+  display: block;
+  inline-size: 40%;
+  block-size: 100%;
+  border-radius: inherit;
+  background: var(--loader-accent);
+  animation: kitchen-progress 1.6s cubic-bezier(0.65, 0, 0.35, 1) infinite alternate;
+}
+
+@keyframes kitchen-pan {
+  0%,
+  20%,
+  60%,
+  100% {
+    transform: rotate(0);
+  }
+  35% {
+    transform: translateY(3px) rotate(-7deg);
+  }
+  45% {
+    transform: translateY(-2px) rotate(4deg);
+  }
+}
+
+@keyframes kitchen-toss {
+  0%,
+  20%,
+  70%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  45% {
+    transform: translateY(-20px) rotate(-12deg);
+  }
+}
+
+@keyframes kitchen-steam {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  35% {
+    opacity: 0.45;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes kitchen-heat {
+  from {
+    opacity: 0.35;
+    transform: scaleY(0.75);
+  }
+  to {
+    opacity: 0.8;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes kitchen-progress {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(150%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #loading-bg * {
+    animation: none;
+  }
+  .kitchen-loader__steam,
+  .kitchen-loader__heat {
+    opacity: 0.35;
+  }
+  .kitchen-loader__progress span {
+    margin-inline: auto;
+  }
+}

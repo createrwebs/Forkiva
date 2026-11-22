@@ -1,0 +1,151 @@
+<?php
+
+namespace Modules\SeatingPlan\Services\Zone;
+
+use App\Forkiva;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Modules\Branch\Models\Branch;
+use Modules\Branch\Services\BranchAccess\BranchAccessServiceInterface;
+use Modules\SeatingPlan\Models\Floor;
+use Modules\SeatingPlan\Models\Zone;
+use Modules\Support\GlobalStructureFilters;
+
+class ZoneService implements ZoneServiceInterface
+{
+    public function __construct(protected BranchAccessServiceInterface $branchAccess) {}
+
+    /** {@inheritDoc} */
+    public function label(): string
+    {
+        return __('seatingplan::zones.zone');
+    }
+
+    /** {@inheritDoc} */
+    public function get(array $filters = [], ?array $sorts = []): LengthAwarePaginator
+    {
+        return $this->exportQuery($filters, $sorts)
+            ->paginate(Forkiva::paginate())
+            ->withQueryString();
+    }
+
+    /** {@inheritDoc} */
+    public function exportQuery(array $filters = [], ?array $sorts = [], array $context = []): Builder
+    {
+        return $this->getModel()
+            ->query()
+            ->withoutGlobalActive()
+            ->with(['branch:id,name', 'floor:id,name'])
+            ->filters($filters)
+            ->sortBy($sorts);
+    }
+
+    /** {@inheritDoc} */
+    public function exportResourceKey(): string
+    {
+        return 'zones';
+    }
+
+    /** {@inheritDoc} */
+    public function exportPermission(): string
+    {
+        return 'admin.zones.export';
+    }
+
+    /** {@inheritDoc} */
+    public function exportModelClass(): string
+    {
+        return Zone::class;
+    }
+
+    /** {@inheritDoc} */
+    public function getModel(): Zone
+    {
+        return new ($this->model());
+    }
+
+    /** {@inheritDoc} */
+    public function model(): string
+    {
+        return Zone::class;
+    }
+
+    /** {@inheritDoc} */
+    public function show(int $id): Zone
+    {
+        return $this->findOrFail($id);
+    }
+
+    /** {@inheritDoc} */
+    public function findOrFail(int $id): Builder|array|EloquentCollection|Zone
+    {
+        return $this->getModel()
+            ->query()
+            ->withoutGlobalActive()
+            ->findOrFail($id);
+    }
+
+    /** {@inheritDoc} */
+    public function store(array $data): Zone
+    {
+        return $this->getModel()
+            ->query()
+            ->create($data);
+    }
+
+    /** {@inheritDoc} */
+    public function update(int $id, array $data): Zone
+    {
+        $zone = $this->findOrFail($id);
+        $zone->update($data);
+
+        return $zone;
+    }
+
+    /** {@inheritDoc} */
+    public function destroy(int|array|string $ids): bool
+    {
+        return $this->getModel()
+            ->query()
+            ->withoutGlobalActive()
+            ->whereIn('id', parseIds($ids))
+            ->delete() ?: false;
+    }
+
+    /** {@inheritDoc} */
+    public function getStructureFilters(?int $branchId = null): array
+    {
+        $branchFilter = GlobalStructureFilters::branch();
+
+        return [
+            ...(is_null($branchFilter) ? [] : [$branchFilter]),
+            [
+                'key' => 'floor_id',
+                'label' => __('seatingplan::zones.filters.floor'),
+                'type' => 'select',
+                'options' => ! is_null($branchId) ? Floor::list($branchId) : [],
+                'depends' => 'branch_id',
+            ],
+            GlobalStructureFilters::active(),
+            GlobalStructureFilters::from(),
+            GlobalStructureFilters::to(),
+        ];
+    }
+
+    /** {@inheritDoc} */
+    public function getFormMeta(?int $branchId = null): array
+    {
+        $resolvedBranchId = $this->branchAccess->resolve($branchId);
+
+        if (is_null($branchId)) {
+            return [
+                'branches' => Branch::list(true),
+            ];
+        }
+
+        return [
+            'floors' => Floor::list($resolvedBranchId),
+        ];
+    }
+}

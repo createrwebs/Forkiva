@@ -1,0 +1,20 @@
+{
+    "name": "forkiva/support",
+    "description": "",
+    "authors": [
+        {
+            "name": "Tenvoro",
+            "email": "tenvoro@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Modules\\Support\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Support\\Tests\\": "tests/"
+        }
+    }
+}

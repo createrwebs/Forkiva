@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'notifications' => 'Notifications',
+    'notification' => 'Notification',
+    'notification_center' => 'Notification Center',
+    'recent_notifications' => 'Recent Notifications',
+    'unread' => 'Unread',
+    'unread_count' => ':count unread',
+    'unread_only' => 'Unread only',
+    'read_notifications' => 'Read',
+    'all_notifications' => 'All notifications',
+    'all_tab' => 'All',
+    'unread_tab' => 'Unread',
+    'read_tab' => 'Read',
+    'mark_as_read' => 'Mark as read',
+    'mark_all_as_read' => 'Mark all as read',
+    'view_all' => 'View all',
+    'load_more' => 'Load more',
+    'empty_state' => 'No notifications found.',
+    'empty_recent_state' => 'No recent notifications.',
+    'search_placeholder' => 'Search notifications',
+    'selected_notification' => 'Selected Notification',
+    'push_token' => 'Push Token',
+    'unknown_device' => 'Unknown device',
+];

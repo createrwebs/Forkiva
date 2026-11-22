@@ -1,0 +1,13 @@
+{
+    "name": "Export",
+    "alias": "export",
+    "description": "",
+    "keywords": [],
+    "priority": 215,
+    "providers": [
+        "Modules\\Export\\Providers\\ExportServiceProvider",
+        "Modules\\Export\\Providers\\DeferredExportServiceProvider",
+        "Modules\\Export\\Providers\\EventServiceProvider"
+    ],
+    "files": []
+}

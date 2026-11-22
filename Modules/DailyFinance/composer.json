@@ -1,0 +1,14 @@
+{
+    "name": "forkiva/dailyfinance",
+    "description": "Restaurant daily financial management.",
+    "autoload": {
+        "psr-4": {
+            "Modules\\DailyFinance\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\DailyFinance\\Tests\\": "tests/"
+        }
+    }
+}

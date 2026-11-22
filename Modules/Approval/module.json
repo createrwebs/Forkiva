@@ -1,0 +1,15 @@
+{
+    "name": "Approval",
+    "alias": "approval",
+    "description": "Reusable maker-checker approval workflows and evidence.",
+    "keywords": [
+        "approval",
+        "maker-checker",
+        "governance"
+    ],
+    "priority": 200,
+    "providers": [
+        "Modules\\Approval\\Providers\\DeferredApprovalServiceProvider"
+    ],
+    "files": []
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Reservation",
+    "alias": "reservation",
+    "description": "",
+    "keywords": [],
+    "priority": 300,
+    "providers": [
+        "Modules\\Reservation\\Providers\\ReservationServiceProvider",
+        "Modules\\Reservation\\Providers\\DeferredReservationServiceProvider",
+        "Modules\\Reservation\\Providers\\EventServiceProvider"
+    ],
+    "files": []
+}
