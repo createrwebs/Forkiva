@@ -11,13 +11,13 @@ use Modules\Core\Contracts\FinancialExpenseSummaryReaderInterface;
 use Modules\Core\Contracts\FinancialInventoryBalanceReaderInterface;
 use Modules\Core\Contracts\FinancialPostingBridgeInterface;
 use Modules\Core\Contracts\FinancialPostingStatusReaderInterface;
+use Modules\Core\Http\Middleware\ResolveTenantMiddleware;
 use Modules\Core\Services\Accounting\NullFinancialAccountLookup;
 use Modules\Core\Services\Accounting\NullFinancialExpenseSummaryReader;
 use Modules\Core\Services\Accounting\NullFinancialInventoryBalanceReader;
 use Modules\Core\Services\Accounting\NullFinancialPostingBridge;
 use Modules\Core\Services\Accounting\NullFinancialPostingStatusReader;
 use Modules\Core\Services\Delivery\NullDeliveryFeatureService;
-use Modules\Core\Http\Middleware\ResolveTenantMiddleware;
 use Modules\Core\Support\ModuleFeature;
 use Modules\Installer\Http\Middleware\CheckInstalled;
 use Modules\Setting\Models\Setting;
@@ -125,7 +125,17 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function registerSetting(): void
     {
-        $this->app->singleton('setting', fn () => new SettingRepository(Setting::allCached()));
+        $this->app->singleton('setting', function (): SettingRepository {
+            try {
+                return new SettingRepository(Setting::allCached());
+            } catch (\Throwable $exception) {
+                if ($this->app->runningInConsole()) {
+                    return new SettingRepository([]);
+                }
+
+                throw $exception;
+            }
+        });
     }
 
     /**

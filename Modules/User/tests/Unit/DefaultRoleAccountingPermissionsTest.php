@@ -2,12 +2,22 @@
 
 namespace Modules\User\Tests\Unit;
 
+use Modules\Core\Support\ModuleFeature;
 use Modules\User\Enums\DefaultRole;
 use Modules\User\Facades\Permission;
 use Tests\TestCase;
 
 class DefaultRoleAccountingPermissionsTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        if (! ModuleFeature::enabled('Accounting')) {
+            $this->markTestSkipped('Accounting optional module is disabled.');
+        }
+    }
+
     public function test_accounting_manager_receives_the_complete_accounting_permission_catalog(): void
     {
         $registeredAccountingPermissions = Permission::getPermissionNames(

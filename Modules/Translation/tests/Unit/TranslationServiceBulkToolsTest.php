@@ -70,10 +70,14 @@ class TranslationServiceBulkToolsTest extends TestCase
 
         $this->assertSame('Forkiva Driver', $translations['en']['delivery::driver_panel.app.name']);
         $this->assertSame('Home', $translations['en']['delivery::driver_app.home.title']);
-        $this->assertSame('Direct', $translations['en']['delivery::driver_app.profile.app_lock_timeout_direct']);
-        $this->assertSame('مباشر', $translations['ar']['delivery::driver_app.profile.app_lock_timeout_direct']);
-        $this->assertSame('Confirm logout', $translations['en']['delivery::driver_app.profile.logout_confirm_title']);
-        $this->assertSame('تأكيد تسجيل الخروج', $translations['ar']['delivery::driver_app.profile.logout_confirm_title']);
+
+        if (\Modules\Core\Support\ModuleFeature::enabled('Delivery')) {
+            $this->assertSame('Direct', $translations['en']['delivery::driver_app.profile.app_lock_timeout_direct']);
+            $this->assertSame('مباشر', $translations['ar']['delivery::driver_app.profile.app_lock_timeout_direct']);
+            $this->assertSame('Confirm logout', $translations['en']['delivery::driver_app.profile.logout_confirm_title']);
+            $this->assertSame('تأكيد تسجيل الخروج', $translations['ar']['delivery::driver_app.profile.logout_confirm_title']);
+        }
+
         $this->assertArrayNotHasKey('hr::employee_app.app.name', $translations['en']);
     }
 

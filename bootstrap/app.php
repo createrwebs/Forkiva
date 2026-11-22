@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -9,6 +11,7 @@ use Illuminate\Validation\ValidationException;
 use Modules\Installer\Http\Middleware\PrepareInstaller;
 use Modules\Support\ApiResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -41,6 +44,25 @@ return Application::configure(basePath: dirname(__DIR__))
                     code: Response::HTTP_UNPROCESSABLE_ENTITY
                 );
             }
+        });
+
+        $exceptions->render(function (Throwable $exception, Request $request) {
+            if (
+                ! config('app.debug')
+                && ($request->is('api/*') || $request->wantsJson())
+                && ! $exception instanceof HttpExceptionInterface
+                && ! $exception instanceof AuthenticationException
+                && ! $exception instanceof AuthorizationException
+                && ! $exception instanceof ValidationException
+            ) {
+                return ApiResponse::errors(
+                    errors: null,
+                    message: 'Internal server error.',
+                    code: Response::HTTP_INTERNAL_SERVER_ERROR
+                );
+            }
+
+            return null;
         });
     })
     ->create();

@@ -32,13 +32,19 @@ class TranslationLoader extends FileLoader
      */
     public function load($locale, $group, $namespace = null): array
     {
-        return Forkiva::cacheEnabled()
-            ? Cache::tags('translations')
+        if (! Forkiva::cacheEnabled()) {
+            return $this->getTranslations($locale, $group, $namespace);
+        }
+
+        try {
+            return Cache::tags('translations')
                 ->rememberForever(
                     md5("translation_loader.$locale.$group.$namespace"),
                     fn () => $this->getTranslations($locale, $group, $namespace)
-                )
-            : $this->getTranslations($locale, $group, $namespace);
+                );
+        } catch (Throwable) {
+            return $this->getTranslations($locale, $group, $namespace);
+        }
     }
 
     /**

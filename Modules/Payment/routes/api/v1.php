@@ -13,7 +13,7 @@ Route::controller(PaymentController::class)
 Route::controller(SlipVerificationController::class)
     ->prefix('payments')
     ->group(function () {
-        Route::post('/slip-verify/parse', 'parse')->middleware('can:admin.orders.receive_payment');
-        Route::post('/slip-verify', 'verify')->middleware('can:admin.orders.receive_payment');
+        Route::post('/slip-verify/parse', 'parse')->middleware(['can:admin.orders.receive_payment', 'throttle:60,1']);
+        Route::post('/slip-verify', 'verify')->middleware(['can:admin.orders.receive_payment', 'throttle:30,1']);
         Route::get('/slip-verifications', 'index')->middleware('can:admin.payments.index');
     });

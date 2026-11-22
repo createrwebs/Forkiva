@@ -5,6 +5,7 @@ use Modules\Core\Http\Controllers\Api\V1\TenantController;
 
 Route::post('public/register-tenant', [TenantController::class, 'register'])
     ->withoutMiddleware('auth')
+    ->middleware('throttle:10,1')
     ->name('public.tenants.register');
 
 Route::post('webhooks/subscription-billing', [TenantController::class, 'billingWebhook'])

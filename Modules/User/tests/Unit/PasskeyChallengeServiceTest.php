@@ -20,6 +20,7 @@ class PasskeyChallengeServiceTest extends TestCase
         parent::setUp();
 
         config()->set('passkeys.cache_store', 'array');
+        config()->set('passkeys.allowed_origins', ['http://localhost']);
     }
 
     public function test_challenge_uses_the_configured_persistent_cache_store(): void

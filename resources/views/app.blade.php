@@ -29,7 +29,7 @@
         href="{{ Media::getCacheMedia(setting('logo'))?->url ?: asset('logo.png') }}"
         rel="apple-touch-icon"
     />
-    <title>{{config('app.name')}} – Restaurant POS</title>
+    <title>{{ config('app.name') }} – POS</title>
     <script>
         // Read the same preference as appStore before the first loader paint.
         (() => {
@@ -111,6 +111,7 @@
             <p id="kitchen-loader-caption" class="kitchen-loader__caption">
                 <span class="kitchen-loader__copy-en" lang="en">{{ __('loader.preparing', [], 'en') }}</span>
                 <span class="kitchen-loader__copy-ar" lang="ar" dir="rtl">{{ __('loader.preparing', [], 'ar') }}</span>
+                <span class="kitchen-loader__copy-th" lang="th">{{ __('loader.preparing', [], 'th') }}</span>
             </p>
             <div class="kitchen-loader__progress" aria-hidden="true"><span></span></div>
         </div>

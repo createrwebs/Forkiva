@@ -10,6 +10,8 @@ Route::get('sw.js', [WebApplicationController::class, 'serviceWorker'])
 Route::get('offline', [WebApplicationController::class, 'index'])
     ->name('web.offline');
 
+Route::redirect('/', '/auth/login')->name('web.home');
+
 // Do not let SPA navigation swallow API, installer, download or missing asset responses.
 Route::get('/{path?}', [WebApplicationController::class, 'index'])
     ->where('path', '(?:admin|auth|employee|driver|online-menu|table-order)(?:/.*)?')

@@ -184,11 +184,14 @@ html[data-loader-theme='dark'] #loading-bg {
 }
 
 .kitchen-loader__copy-ar,
-html:lang(ar) .kitchen-loader__copy-en {
+.kitchen-loader__copy-th,
+html:lang(ar) .kitchen-loader__copy-en,
+html:lang(th) .kitchen-loader__copy-en {
   display: none;
 }
 
-html:lang(ar) .kitchen-loader__copy-ar {
+html:lang(ar) .kitchen-loader__copy-ar,
+html:lang(th) .kitchen-loader__copy-th {
   display: inline;
   letter-spacing: normal;
 }

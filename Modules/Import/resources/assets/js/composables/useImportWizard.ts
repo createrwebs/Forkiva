@@ -328,7 +328,11 @@ export function useImportWizard(
       link.href = url
       link.download = name
       link.click()
-      setTimeout(() => URL.revokeObjectURL(url), 1000)
+      setTimeout(() => {
+        if (typeof URL.revokeObjectURL === 'function') {
+          URL.revokeObjectURL(url)
+        }
+      }, 1000)
     } catch (error) {
       toast.error(errorMessage(error))
     } finally {

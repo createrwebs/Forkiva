@@ -16,6 +16,7 @@ export default defineConfig({
   resolve: { alias: frontendAliases },
   test: {
     environment: 'jsdom',
+    setupFiles: ['./scripts/vitest.setup.ts'],
     include: [
       'resources/js/**/*.test.ts',
       'Modules/*/resources/assets/js/**/*.test.ts',

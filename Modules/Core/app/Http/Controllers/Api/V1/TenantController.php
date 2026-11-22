@@ -24,10 +24,10 @@ class TenantController extends Controller
     public function register(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'shop_name' => ['required', 'string', 'max:150'],
+            'shop_name' => ['required', 'string', 'max:150', 'not_regex:/[<>]/'],
             'slug' => ['nullable', 'string', 'max:64', 'alpha_dash', 'unique:tenants,slug'],
             'business_type' => ['nullable', 'in:'.implode(',', array_column(TenantBusinessType::cases(), 'value'))],
-            'owner_name' => ['required', 'string', 'max:150'],
+            'owner_name' => ['required', 'string', 'max:150', 'not_regex:/[<>]/'],
             'email' => ['required', 'email', 'max:190'],
             'password' => ['required', 'string', 'min:8'],
             'phone' => ['nullable', 'string', 'max:30'],
